@@ -56,11 +56,7 @@ app.get("/chatRoom",(req, res)=>{
 
 
 
-
-
-
-const PORT =3000||process.env.PORT
-server.listen(3000||process.env.PORT,() => {
-    console.log(`listening on port${PORT}`);
+server.listen(3000||process.env.PORT,'0.0.0.0',() => {
+    
 })
 
