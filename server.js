@@ -54,13 +54,12 @@ app.get("/chatRoom",(req, res)=>{
 })
 
 
+const PORT=process.env.PORT|| 80;
 
-
-server.listen(80||process.env.PORT,'0.0.0.0',(err) => {
+server.listen(PORT,'0.0.0.0',(err) => {
     if(err)console.log(err)
     else{
         console.log("RUNNING")
     }
 })
 
-console.log(process.env.PORT)
