@@ -56,7 +56,7 @@ app.get("/chatRoom",(req, res)=>{
 
 
 
-server.listen(3000||process.env.PORT,'0.0.0.0',() => {
-    
+server.listen(3000||process.env.PORT,'0.0.0.0',(err) => {
+    if(err)console.log(err)
 })
 
