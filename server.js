@@ -22,7 +22,7 @@ io.on("connection",socket=>{
         socket.emit("message",formatMsg("Chit-Chatter(Admin)","Welcome to the Room"))
 
         //client joined
-        socket.broadcast.to(user.roomName).emit("message",formatMsg("Chit-Chatter(Admin)",`${user.userName} joined the room`))
+        socket.broadcast.to(user.roomName).emit("message",formatMsg("Chit-Chatter(Admin)",`${user.userName} has joined the room`))
 
     })
 
@@ -39,7 +39,7 @@ io.on("connection",socket=>{
     socket.on("disconnect",()=>{
         const user=leaveUser(socket.id);
         if(user){
-            io.to(user.roomName).emit("message",formatMsg("Chit-Chatter(Admin)",`${user.userName} Disconnected from the room`))
+            io.to(user.roomName).emit("message",formatMsg("Chit-Chatter(Admin)",`${user.userName} has disconnected from the room`))
         }
         
     })
@@ -54,12 +54,9 @@ app.get("/chatRoom",(req, res)=>{
 })
 
 
-const PORT=process.env.PORT|| 80;
+const PORT=process.env.PORT|| 3000;
 
 server.listen(PORT,'0.0.0.0',(err) => {
     if(err)console.log(err)
-    else{
-        console.log("RUNNING")
-    }
 })
 

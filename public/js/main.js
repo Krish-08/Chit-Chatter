@@ -6,8 +6,8 @@ const { userName, roomName } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
 
-console.log(userName)
-//joinChat
+// console.log(userName)
+// //joinChat
 
 socket.emit("joinRoom", { userName, roomName })
 
@@ -30,9 +30,10 @@ form.addEventListener("submit", e => {
 })
 
 function outputMessage(message) {
-    console.log(message);
-    console.log(message.username.localeCompare(userName));
+    // console.log(message);
+    // console.log(message.username.localeCompare(userName));
     let num = message.username.localeCompare(userName)
+    let num1= message.username.localeCompare("Chit-Chatter(Admin)")
     const div = document.createElement("div");
     if (num == 0) {
         console.log("IN if statement");
@@ -52,6 +53,19 @@ style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg
 ${message.text}
 </div>
 </div>`;
+        chatMessage.appendChild(div);
+    }
+    else if(num1==0){
+        console.log("IN admin  statement");
+        div.classList.add("msg", "center-msg");
+        div.innerHTML=`<div class="msg center-msg">
+                            <div class="msg-bubble">
+                                <div class="msg-text">
+                                    ${message.text}
+                                </div>
+                            </div>
+                        </div>
+        `
         chatMessage.appendChild(div);
     }
     else {
@@ -74,6 +88,8 @@ ${message.text}
         chatMessage.appendChild(div);
 
     }
+
+
 }
 
 //adding room ID in header

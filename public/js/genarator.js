@@ -4,9 +4,10 @@ let nanoid=(e=21)=>{let n="",r=crypto.getRandomValues(new Uint8Array(e));for(;e-
     return n
 }
 
-
+const array=[];
 document.getElementById("sub").onclick=()=>{
     let id=nanoid(10);
+    array.push(id);
     document.getElementById("roomID").value=id;
 
 }
